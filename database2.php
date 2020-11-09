@@ -1,6 +1,5 @@
 <?php
 // Samantha Mathis
-// Savannah Way
 include "databaseadapter.php";
 
 
