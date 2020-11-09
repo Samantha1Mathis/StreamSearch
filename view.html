@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Samantha Mathis -->
+<!-- Savannah Way -->
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="streamstyles.css"/>
+<title>StreamSearch</title>
+
+  </head>
+
+<body onload="showAll()">
+<br></br>
+<div id="header">
+<div class="login">
+  <span>⎋StreamSearch</span>
+<button class="button3"><a href="./register.php?mode=register">Register</a></button>
+<button class="button3"><a href="./login.php?mode=login">Login</a></button>
+
+
+</div>
+</div>
+<br></br>
+<br></br>
+<div id="movies"></div>
+
+<script>
+
+var elementToChange = document.getElementById("movies");
+
+function showAll() {
+  	//alert("Get a JSON array of folder names from the server")
+  	elementToChange.innerHTML = "";
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "controller2.php?movie_img", true);
+	ajax.send();
+	ajax.onreadystatechange = function(){
+		if (ajax.readyState == 4 && ajax.status == 200){
+			var array = JSON.parse(ajax.responseText);
+			for (var index = 0; index < array.length; index++) { 
+				elementToChange.innerHTML += '<img class= "onemovie" src=' + array[index] + ' id=' + array[index]+ '>';
+				
+
+			}
+
+		}
+			
+
+		};
+	}
+
+
+</script>
+
+</body>
+</html>
